@@ -7,14 +7,21 @@
 
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a href="/MainPage" class="nav-link">Home</a></li>
+        <li class="nav-item">
+         
+          <a [routerLink]="['/home']" class="nav-link">Home</a>
+        </li>
      
-        <li class="nav-item"><a href="/property-upload" class="nav-link">Poner anuncio</a></li>
+        <li class="nav-item">
+          <a [routerLink]="['/login']" class="nav-link">Poner anuncio</a>
+        </li>
         <li class="nav-item"><a href="/properties" class="nav-link">Mis favoritos</a></li>
         <li class="nav-item"><a href="/properties-modificar" class="nav-link">Mis anuncios</a></li>
    
         <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
-        <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+        <li class="nav-item">
+          <a [routerLink]="['/login']" class="nav-link">Login</a>
+        </li>
 
         <li class="nav-item"><a href="/AllProperties" class="nav-link">Listado de anuncios</a></li>
         <li class="nav-item"><a href="/new-blog" class="nav-link">Nuevo Blog</a></li>

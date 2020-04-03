@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { RecomendacionesComponent } from './components/recomendaciones/recomendaciones.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 
@@ -19,7 +21,9 @@ import { RecomendacionesComponent } from './components/recomendaciones/recomenda
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    RecomendacionesComponent
+    RecomendacionesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
