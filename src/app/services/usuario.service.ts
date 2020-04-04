@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { url_base } from '../config/config';
 import { User } from '../models/user.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class UsuarioService {
 
   public url = url_base + 'user/';
+  public logueado : BehaviorSubject <number> = new BehaviorSubject<number>(0);
 
   constructor(
     private http: HttpClient
@@ -27,6 +28,11 @@ export class UsuarioService {
     return this.http.get(this.url +'login?email=' + user.name + '&password=' + user.password );
   }
 
+ /*  public loginCorrecto(numero: number) {
+    console.log('numero', numero);
+    this.logueado.next(numero);
+  }
+ */
   public createUser( user: User): Observable<any>  {
 
     return this.http.post( this.url + 'create', user );

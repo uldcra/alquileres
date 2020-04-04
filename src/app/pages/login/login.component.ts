@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  public logueado: boolean = false;
+
   public loginForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     password: new FormControl(''),
@@ -22,11 +24,30 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userService.logueado.subscribe( resp => {
+      if ( resp == 0) {
+        this.logueado = false;
+      } else {
+        this.logueado = true;
+      }
+    })
   }
 
   
   onSubmit() {
     console.log('loginForm' , this.loginForm.value);
+    this.userService.logIn( this.loginForm.value ).subscribe( (resp: User) => {
+      console.log('respuesta', resp);
+      if ( resp == null ) {
+        console.log('No se ha encontrado usuario');
+      } else {
+          localStorage.setItem('name', resp.name);
+          localStorage.setItem('email', resp.email);
+         
+         
+      }
+    });
+    
     this.userService.logIn( this.loginForm.value ).toPromise()
     .then( (resp: User) => {
       console.log('respuesta', resp);
@@ -35,20 +56,27 @@ export class LoginComponent implements OnInit {
       } else {
           localStorage.setItem('name', resp.name);
           localStorage.setItem('email', resp.email);
+          console.log('logueado');
+          
+          this.userService.logueado.next(1);
+          this.router.navigate(['/home']);
+         
       }
       
-    })
-    .then( () => {
+    });
+    /* .then( () => {
       console.log('segunda respuesta' );
+     
     })
     .catch( error => {
       console.warn('error', error);
-    });
+    }); */
   }
 
   logOut() {
     localStorage.clear();
-    this.router.navigate(['/home']);
+    this.userService.logueado.next(0);
+    //this.router.navigate(['/home']);
   }
 
 }
