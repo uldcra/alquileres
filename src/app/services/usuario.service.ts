@@ -37,4 +37,10 @@ export class UsuarioService {
 
     return this.http.post( this.url + 'create', user );
   }
+
+  addFovrites(id, id_advfo){
+    return this.http.get(this.url + 'addfavo?id=' + id + '&id_advfo=' + id_advfo);
+    
+  }
+
 }

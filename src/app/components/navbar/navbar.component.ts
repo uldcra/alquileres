@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit {
 comprobarLogin() {
   //this.rellenarMenu();
   this.UsuarioService.logueado.subscribe( resp => {
-    console.log('Observable login ', resp );
+    //console.log('Observable login ', resp );
     
     if ( resp == 0 ) {
       this.rellenarMenu();
@@ -63,9 +63,13 @@ comprobarLogin() {
  * Rellenar Menu
  */
   rellenarMenu() {
- 
-    if ( localStorage.getItem('name') != null ) {
-      this.menuAdmin();
+ /* this.menuAdmin(); */
+    if ( localStorage.getItem('role') != null ) {
+      if (localStorage.getItem('role').localeCompare('ROLE_ADMIN') == 0) {
+        this.menuAdmin();
+      } else {
+        this.menuUser();
+      }
      } else {
        this.menuSimple();
      }

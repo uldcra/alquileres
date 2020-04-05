@@ -36,27 +36,29 @@ export class LoginComponent implements OnInit {
   
   onSubmit() {
     console.log('loginForm' , this.loginForm.value);
-    this.userService.logIn( this.loginForm.value ).subscribe( (resp: User) => {
+  /*   this.userService.logIn( this.loginForm.value ).subscribe( (resp: any) => {
       console.log('respuesta', resp);
       if ( resp == null ) {
         console.log('No se ha encontrado usuario');
       } else {
           localStorage.setItem('name', resp.name);
           localStorage.setItem('email', resp.email);
+          localStorage.setItem('role', resp.roles[0].nombre );
          
          
       }
-    });
+    }); */
     
     this.userService.logIn( this.loginForm.value ).toPromise()
-    .then( (resp: User) => {
+    .then( (resp: any) => {
       console.log('respuesta', resp);
       if ( resp == null ) {
         console.log('No se ha encontrado usuario');
       } else {
-          localStorage.setItem('name', resp.name);
-          localStorage.setItem('email', resp.email);
-          console.log('logueado');
+        localStorage.setItem('name', resp.name);
+        localStorage.setItem('email', resp.email);
+        localStorage.setItem('role', resp.roles[0].nombre );
+        localStorage.setItem('id', resp.id );
           
           this.userService.logueado.next(1);
           this.router.navigate(['/home']);

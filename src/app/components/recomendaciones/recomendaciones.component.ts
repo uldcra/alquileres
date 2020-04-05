@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 @Component({
   selector: 'app-recomendaciones',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecomendacionesComponent implements OnInit {
 
-  constructor() { }
+  @Input() items:any;
+
+  constructor(
+    private UsuarioService: UsuarioService
+  ) { }
 
   ngOnInit() {
+  }
+
+  agregarFavoritos(id_favo: number ) {
+    console.log('id_favo: ', id_favo );
+    let id_user = localStorage.getItem('id');
+    this.UsuarioService.addFovrites(id_user,id_favo).toPromise()
+    .then( resp => {
+      console.log('todo ha ido bien', resp);
+      
+    })
+    .then( () => {})
+    .catch( error => {
+      console.log('error: ', error);
+      
+    });
+    
   }
 
 }

@@ -5,60 +5,32 @@
       <h2 class="mb-2">Viviendas seleccionadas para ti</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-4">
+  <div class="row" >
+    <div class="col-md-4" *ngFor="let item of items">
       <div class="property-wrap ftco-animate fadeInUp ftco-animated">
       <a href="/properties/16" class="img" style="background-image: url(assets/static/images/work-2.jpg);"></a>
         <div class="text">
-          <p class="price"><span class="old-price">650.0</span><span class="orig-price">650.0<small>/mo</small></span></p>
+          <p class="price"><span class="old-price">{{item.price}}</span><span class="orig-price">{{item.price}}<small>/mo</small></span></p>
           <ul class="property_list">
-            <li><span class="flaticon-bed"></span>3</li>
-            <li><span class="flaticon-bathtub"></span>1</li>
-            <li><span class="flaticon-floor-plan"></span>78</li>
+            <li><span class="flaticon-bed"></span>{{item.rooms}}</li>
+            <li><span class="flaticon-bathtub"></span>{{item.bathrooms}}</li>
+            <li><span class="flaticon-floor-plan"></span>{{item.squareMeters}}</li>
           </ul>
-          <h3><a href="#">Local en Ciudad Real</a></h3>
-          <span class="location">Alquiler</span>
-          <a href="/addFavourite/16" class="d-flex align-items-center justify-content-center btn-custom">
+          <h3><a href="#">Local en {{item.location}}</a></h3>
+          <span class="location">{{item.type}}</span>
+          <button type="button"class="d-flex align-items-center justify-content-center btn-custom"
+          (click)="agregarFavoritos(item.id)"
+          >
             <span class="icon-star-o"></span>
-          </a>
+
+          </button>
+         <!--  <a href="/addFavourite/16" class="d-flex align-items-center justify-content-center btn-custom">
+            <span class="icon-star-o"></span>
+          </a> -->
         </div>
       </div>
 </div>
-    <div class="col-md-4">
-      <div class="property-wrap ftco-animate fadeInUp ftco-animated">
-      <a href="/properties/13" class="img" style="background-image: url(assets/static/images/work-6.jpg);"></a>
-        <div class="text">
-          <p class="price"><span class="old-price">1200.0</span><span class="orig-price">1200.0<small>/mo</small></span></p>
-          <ul class="property_list">
-            <li><span class="flaticon-bed"></span>3</li>
-            <li><span class="flaticon-bathtub"></span>1</li>
-            <li><span class="flaticon-floor-plan"></span>78</li>
-          </ul>
-          <h3><a href="#">Local en Mostoles</a></h3>
-          <span class="location">Alquiler</span>
-          <a href="/addFavourite/13" class="d-flex align-items-center justify-content-center btn-custom">
-            <span class="icon-star-o"></span>
-          </a>
-        </div>
-      </div>
-</div>
-    <div class="col-md-4">
-      <div class="property-wrap ftco-animate fadeInUp ftco-animated">
-      <a href="/properties/9" class="img" style="background-image: url(assets/static/images/work-3.jpg);"></a>
-        <div class="text">
-          <p class="price"><span class="old-price">1600.0</span><span class="orig-price">1600.0<small>/mo</small></span></p>
-          <ul class="property_list">
-            <li><span class="flaticon-bed"></span>3</li>
-            <li><span class="flaticon-bathtub"></span>1</li>
-            <li><span class="flaticon-floor-plan"></span>90</li>
-          </ul>
-          <h3><a href="#">Piso en Pontevedra</a></h3>
-          <span class="location">Alquiler</span>
-          <a href="/addFavourite/9" class="d-flex align-items-center justify-content-center btn-custom">
-            <span class="icon-star-o"></span>
-          </a>
-        </div>
-      </div>
-</div>
+
+
 </div>
 </div>

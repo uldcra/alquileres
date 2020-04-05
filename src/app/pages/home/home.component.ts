@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RecomendacionesService } from 'src/app/services/recomendaciones.service';
+
 
 @Component({
   selector: 'app-home',
@@ -18,9 +20,19 @@ export class HomeComponent implements OnInit {
   public key:any = '';
   public value:any = '';
 
-  constructor() { }
+  public items: any[] = [];
+
+  constructor(
+    private recomendacionesService: RecomendacionesService
+  ) { }
 
   ngOnInit() {
+    this.recomendacionesService.listarAdvertisement().toPromise()
+    .then( resp => {
+      console.log(resp);
+      
+      this.items = resp;
+    })
   }
 
 
