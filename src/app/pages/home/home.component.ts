@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
   public id:any = '';
   public key:any = '';
   public value:any = '';
+  public showDelete: boolean = false;
+  public showFavo: boolean = true;
 
   public items: any[] = [];
 

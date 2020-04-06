@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 
 @Component({
@@ -10,6 +11,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class RecomendacionesComponent implements OnInit {
 
   @Input() items:any;
+  @Input() showDelete: boolean;
+  @Input() showFavo: boolean;
+
+  @Output() listar: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     private UsuarioService: UsuarioService
@@ -32,6 +37,25 @@ export class RecomendacionesComponent implements OnInit {
       
     });
     
+  }
+
+  deleteFavo(id_favo) {
+    let id;
+    try {
+      id = localStorage.getItem('id');
+      this.UsuarioService.removeFavorites( id , id_favo ).toPromise()
+      .then( (resp) => {
+        console.log('favoritos eliminado ', resp );
+        this.listar.emit(true);
+      }).catch( error => {
+        console.log('error', error );
+        
+      });
+    } catch (error) {
+      console.log('no hay id', error);
+      
+    }
+
   }
 
 }

@@ -88,13 +88,13 @@ comprobarLogin() {
 
   menuUser() {
     
-    
+    let id = localStorage.getItem('id');
     this.itemsMenu = [ 
       {label: 'Home' , ruta: 'home'},
       {label: 'Poner anuncio' , ruta: 'blog'},
-      {label: 'Mis favoritos' , ruta: 'blog'},
+      {label: 'Mis favoritos' , ruta: 'favoritos/' + id},
       {label: 'Mis anuncios' , ruta: 'Mis anuncios'},
-      {label: 'Blog' , ruta: 'blog'},
+      {label: 'Blog' , ruta: 'favoritos/' + id },
       {label: 'Logout' , ruta: 'login'
     },
       

@@ -11,6 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { RecomendacionesComponent } from './components/recomendaciones/recomendaciones.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { FavoritosComponent } from './pages/favoritos/favoritos.component';
 
 
 
@@ -23,7 +24,8 @@ import { RegisterComponent } from './pages/register/register.component';
     HomeComponent,
     RecomendacionesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FavoritosComponent
   ],
   imports: [
     BrowserModule,

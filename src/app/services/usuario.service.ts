@@ -33,6 +33,11 @@ export class UsuarioService {
     this.logueado.next(numero);
   }
  */
+public getUSer(id): Observable<any> {
+
+  return this.http.get(this.url + 'listar/' + id );
+}
+
   public createUser( user: User): Observable<any>  {
 
     return this.http.post( this.url + 'create', user );
@@ -41,6 +46,10 @@ export class UsuarioService {
   addFovrites(id, id_advfo){
     return this.http.get(this.url + 'addfavo?id=' + id + '&id_advfo=' + id_advfo);
     
+  }
+  removeFavorites(id, id_advfo){
+    return this.http.get(this.url + 'removeFavo?id=' + id + '&id_advfo=' + id_advfo);
+
   }
 
 }
